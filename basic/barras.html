@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <title>Tarefa 3 — gráfico de barras em SVG</title>
+        <style>
+            body { font-family: sans-serif; margin: 20px; }
+            .rotulo { font-size: 12px; fill: black; text-anchor: middle; }
+        </style>
+    </head>
+    <body>
+        <h1>Tarefa 3</h1>
+
+        <!-- ================= SUA TAREFA =================
+             Desenhe, à mão, um gráfico de barras com estas cinco
+             despesas:            15, 10, 12, 5, 66
+
+             A PRIMEIRA barra já está pronta abaixo, como modelo.
+             Faça as outras QUATRO.
+
+             REGRA: você pode copiar e colar UMA vez. Depois disso,
+             digite. É para doer um pouco — a próxima aula começa
+             exatamente daqui.
+
+             As contas (faça no papel antes de digitar):
+
+                 altura da barra = despesa * 4
+                 y  = 280 - altura         <- o y do SVG cresce
+                                              para BAIXO, então a
+                                              barra "desce" do topo
+                 x  = 10 + posição * 50    <- posição = 0, 1, 2, 3, 4
+                 largura = 40
+
+             Confira: a barra do 66 tem altura 264 e y = 16.
+             Se alguma barra ficar pendurada no topo, você esqueceu
+             de subtrair a altura de 280.
+
+             Ao terminar, salve este arquivo como  barras.html
+             (Arquivo > Salvar como), na MESMA pasta basic.
+             É o barras.html que vai para o GitHub Pages.
+             ============================================== -->
+
+        <svg id="grafico" width="300" height="300" style="border: 1px solid gray;">
+
+            <!-- linha de base -->
+            <line x1="0" y1="280" x2="300" y2="280" stroke="gray" stroke-width="1"></line>
+
+            <!-- ---------- barra 1: despesa 15 (MODELO) ---------- -->
+            <rect x="10" y="220" width="40" height="60" fill="steelblue"></rect>
+            <text class="rotulo" x="30" y="295">15</text>
+
+            <!-- ---------- barra 2: despesa 10 ---------- -->
+			<rect x="60" y="230" width="40" height="50" fill="steelblue"></rect>
+			<text class="rotulo" x="80" y="295">10</text>
+
+            <!-- ---------- barra 3: despesa 12 ---------- -->
+			<rect x="110" y="225" width="40" height="55" fill="steelblue"></rect>
+			<text class="rotulo" x="130" y="295">12</text>
+
+            <!-- ---------- barra 4: despesa 5 ---------- -->
+			<rect x="160" y="235" width="40" height="45" fill="steelblue"></rect>
+			<text class="rotulo" x="180" y="295">05</text>
+
+            <!-- ---------- barra 5: despesa 66 ---------- -->
+			<rect x="210" y="160" width="40" height="120" fill="steelblue"></rect>
+			<text class="rotulo" x="230" y="295">66</text>
+
+        </svg>
+
+        <!-- Terminou antes da hora? Tente:
+             - pintar a barra mais alta de outra cor
+             - acrescentar uma sexta despesa, de valor 40
+               (quantas coisas você teve que mudar?)  -->
+    
+
+</body></html>

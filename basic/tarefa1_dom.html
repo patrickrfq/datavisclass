@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Tarefa 1 — DOM e console</title>
+        <style>
+            body { font-family: sans-serif; margin: 20px; }
+            .container { border: 2px dashed gray; padding: 10px; }
+            #mapa      { height: 60px; background-color: lightblue; }
+            #barchart  { height: 60px; background-color: lightgreen; margin-top: 10px; }
+        </style>
+    </head>
+    <body>
+        <h1>Tarefa 1</h1>
+        <p>Esse é um parágrafo.</p>
+        <p class="destaque">Esse é outro parágrafo.</p>
+		<div id='titulo'>Patrick Romero</div>
+        <!-- ================= SUA TAREFA =================
+             1. Acrescente AQUI um elemento div com id="titulo"
+                contendo o seu nome.
+             2. Salve o arquivo e recarregue a página.
+             3. Abra o console do browser e digite, uma linha por vez:
+
+                    document
+                    document.body
+                    document.getElementById("titulo")
+                    document.getElementById("titulo").textContent
+                    document.querySelectorAll("p")
+                    document.getElementById("mapa").style.backgroundColor = "orange"
+
+             4. A ÚLTIMA linha muda a página sem tocar no arquivo.
+                Recarregue a página: o que acontece com a cor? Por quê?
+             ============================================== -->
+
+        <div class="container" id="content">
+            <div id="mapa"> </div>
+            <div id="barchart"> </div>
+        </div>
+    </body>
+</html>

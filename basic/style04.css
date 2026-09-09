@@ -1,0 +1,30 @@
+/* Regra de TIPO: vale para todo div */
+div {
+	color: blue;
+	padding: 10px;
+	margin-bottom: 10px;
+	font-size: 18px;
+}
+
+/* Regra de CLASSE */
+.caixa {
+	background-color: lightgray;
+	color: black;
+}
+
+/* Regra de ID — repare que ela entra em conflito com .caixa */
+#destaque {
+	background-color: gold;
+	color: darkred;
+}
+
+/* Regra DESCENDENTE: só vale para .aviso que esteja dentro de #destaque */
+#destaque .aviso {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.aviso {
+	font-weight: normal;
+	font-style: italic;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Tarefa 2 — conflito de seletores</title>
+        <link rel="stylesheet" href="style04.css">
+    </head>
+    <body>
+        <h1>Tarefa 2</h1>
+
+        <!-- ================= SUA TAREFA =================
+             ANTES de abrir esta página no browser, olhe o arquivo
+             style04.css e responda no papel:
+
+             a) De que cor fica o FUNDO da caixa 2? Ela combina
+                uma regra de classe (.caixa) com uma regra de id
+                (#destaque), e as duas mandam em background-color.
+             b) E o TEXTO da caixa 2?
+             c) E o fundo da caixa 3?
+             d) O parágrafo "atenção" aparece em itálico, negrito,
+                sublinhado — ou uma combinação?
+
+             Agora abra a página e confira. Depois:
+
+             e) Faça a caixa 2 voltar a ficar CINZA sem apagar nem
+                alterar a regra #destaque do style04.css.
+                (Existe mais de um caminho. Descubra qual.)
+             f) Explique ao colega ao lado qual regra venceu em
+                cada caso e por quê.
+             ============================================== -->
+
+        <div class="caixa">
+            Caixa 1 — só tenho class="caixa".
+        </div>
+
+        <div class="caixa" id="destaque" style="background-color: lightgray;>
+            Caixa 2 — tenho class="caixa" E id="destaque".
+            <p class="aviso">Parágrafo de atenção dentro da caixa 2.</p>
+        </div>
+
+        <div class="caixa" style="background-color: pink;">
+            Caixa 3 — tenho class="caixa" e um estilo inline.
+        </div>
+
+        <p class="aviso">Parágrafo de atenção FORA de qualquer caixa.</p>
+    </body>
+</html>
