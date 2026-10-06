@@ -1,3 +1,11 @@
+## Exercícios de Vega-Lite — 2026.2
+
+[Gráficos no GitHub Pages](https://patrickrfq.github.io/datavisclass/vega-lite/)
+
+[Caderno no Observable](https://old.observablehq.com/d/9001ef839b247f59)
+
+Média de calorias por tipo de treino e gráficos de dispersão da duração da sessão em relação às calorias queimadas, separados entre homens e mulheres.
+
 ## Aula do dia 09/09/2026
 
 ### Exemplos vistos em aula
@@ -38,3 +46,4 @@ Depois abra <http://localhost:8000> no browser.
 ---
 
 Para saber mais sobre a sintaxe markdown, veja [este guia](https://guides.github.com/features/mastering-markdown/).
+
