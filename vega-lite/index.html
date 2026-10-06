@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estilo de vida e treino — Vega-Lite</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #203447; background: #f4f7fa; font: 16px/1.6 system-ui, sans-serif; }
+    main { max-width: 1040px; margin: auto; padding: 40px 24px; }
+    h1 { font-size: clamp(26px, 4vw, 36px); line-height: 1.2; margin: 8px 0 18px; }
+    h2 { font-size: 22px; line-height: 1.3; }
+    .curso { color: #44657e; font-size: 14px; margin: 0; }
+    section { background: white; margin: 28px 0; padding: 24px; border: 1px solid #dce5ed; border-radius: 8px; }
+    .grafico { overflow-x: auto; padding: 12px 0; }
+    .nota { color: #526578; font-size: 14px; }
+    a { color: #16638f; }
+    #status { color: #526578; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/vega@6.4.0/build/vega.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@6.4.3/build/vega-lite.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite-api@6.0.0/build/vega-lite-api.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@7.3.0/build/vega-embed.min.js"></script>
+</head>
+<body>
+<main>
+  <p class="curso">Visualização de Dados · Pós-graduação · 2026.2</p>
+  <h1>Estilo de vida e treino</h1>
+  <p>Patrick Romero — Exercícios da API Vega-Lite.</p>
+  <p>Visualizações do conjunto de dados fornecido na atividade, com 20.000 indivíduos.</p>
+  <p id="status" role="status">Carregando gráficos…</p>
+  <section>
+    <h2>1. Média de calorias por tipo de treino</h2>
+    <p>Cada barra mostra a média de <code>Calories_Burned</code> para um valor de <code>Workout_Type</code>, em ordem crescente da média.</p>
+    <div class="grafico" id="barras"></div>
+    <p class="nota">O eixo vertical começa em zero. Passe o cursor sobre uma barra para consultar a média e o número de indivíduos.</p>
+  </section>
+  <section>
+    <h2>2. Duração da sessão e calorias queimadas</h2>
+    <p>Cada ponto representa um indivíduo. Os painéis separam os valores <code>Male</code> e <code>Female</code> de <code>Gender</code>, com as mesmas escalas nos dois eixos.</p>
+    <div class="grafico" id="dispersao"></div>
+    <p class="nota">A transparência reduz a sobreposição de pontos. A visualização mostra associação entre as variáveis e não estabelece uma relação causal.</p>
+  </section>
+  <footer class="nota">
+    <p>Fonte: <a href="https://old.observablehq.com/@vis-ufc/vega-lite-api-exercicios-2026-2">Vega-Lite Api — Exercícios — 2026.2, Data Visualization @ UFC-Brazil</a>.</p>
+    <p><a href="https://old.observablehq.com/d/9001ef839b247f59">Notebook de Patrick Romero no Observable</a>.</p>
+    <p>Os gráficos utilizam Vega-Lite API v6 e são publicados com vega-embed.</p>
+  </footer>
+</main>
+<script src="graficos.js"></script>
+<script>
+  async function iniciar() {
+    const resposta = await fetch('https://static.observableusercontent.com/files/f6f1ea966e2db89267aea24d18b9b77109efe0dd1e07f54ca1c8ad83a9659838ea845596b0dba4e7388441c1a8f21213f12a3eef8adba45ce43f2bd99d8330e6');
+    if (!resposta.ok) throw new Error('Não foi possível carregar os dados.');
+    const dados = vega.read(await resposta.text(), {type: 'csv', parse: {'Session_Duration (hours)': 'number', 'Calories_Burned': 'number'}});
+    vl.register(vega, vegaLite);
+    const config = {font: 'system-ui', axis: {labelFontSize: 12, titleFontSize: 13}, title: {fontSize: 16, anchor: 'start'}, view: {stroke: null}};
+    const barras = criarBarras(vl, dados).toSpec();
+    const dispersao = criarDispersao(vl, dados).toSpec();
+    barras.config = config;
+    dispersao.config = config;
+    await vegaEmbed('#barras', barras, {renderer: 'canvas', actions: {export: true, source: false, compiled: false, editor: false}});
+    await vegaEmbed('#dispersao', dispersao, {renderer: 'canvas', actions: {export: true, source: false, compiled: false, editor: false}});
+    document.getElementById('status').textContent = dados.length.toLocaleString('pt-BR') + ' indivíduos representados. Dados completos, sem amostragem.';
+  }
+  iniciar().catch(erro => {
+    document.getElementById('status').textContent = 'Falha ao carregar: ' + erro.message;
+    console.error(erro);
+  });
+</script>
+</body>
+</html>
+
