@@ -31,19 +31,19 @@
   <p id="status" role="status">Carregando gráficos…</p>
   <section>
     <h2>1. Média de calorias por tipo de treino</h2>
-    <p>Cada barra mostra a média de <code>Calories_Burned</code> para um valor de <code>Workout_Type</code>, em ordem crescente da média.</p>
+    <p>Média de calorias queimadas em cada tipo de treino, em ordem crescente.</p>
     <div class="grafico" id="barras"></div>
-    <p class="nota">O eixo vertical começa em zero. Passe o cursor sobre uma barra para consultar a média e o número de indivíduos.</p>
+    <p class="nota">Passe o cursor sobre as barras para consultar os valores.</p>
   </section>
   <section>
     <h2>2. Duração da sessão e calorias queimadas</h2>
-    <p>Cada ponto representa um indivíduo. Os painéis separam os valores <code>Male</code> e <code>Female</code> de <code>Gender</code>, com as mesmas escalas nos dois eixos.</p>
+    <p>Cada ponto representa uma pessoa. Os gráficos de homens e mulheres usam as mesmas escalas.</p>
     <div class="grafico" id="dispersao"></div>
-    <p class="nota">A transparência reduz a sobreposição de pontos. A visualização mostra associação entre as variáveis e não estabelece uma relação causal.</p>
+    <p class="nota">A transparência ajuda a visualizar os pontos sobrepostos.</p>
   </section>
   <footer class="nota">
-    <p>Fonte: <a href="https://old.observablehq.com/@vis-ufc/vega-lite-api-exercicios-2026-2">Vega-Lite Api — Exercícios — 2026.2, Data Visualization @ UFC-Brazil</a>.</p>
-    <p><a href="https://old.observablehq.com/d/9001ef839b247f59">Notebook de Patrick Romero no Observable</a>.</p>
+    <p>Fonte: <a href="https://old.observablehq.com/@vis-ufc/vega-lite-api-exercicios-2026-2">Exercícios de Vega-Lite — Visualização de Dados, UFC — 2026.2</a>.</p>
+    <p><a href="https://old.observablehq.com/d/9001ef839b247f59">Caderno de Patrick Romero no Observable</a>.</p>
     <p>Os gráficos utilizam Vega-Lite API v6 e são publicados com vega-embed.</p>
   </footer>
 </main>
@@ -59,9 +59,9 @@
     const dispersao = criarDispersao(vl, dados).toSpec();
     barras.config = config;
     dispersao.config = config;
-    await vegaEmbed('#barras', barras, {renderer: 'canvas', actions: {export: true, source: false, compiled: false, editor: false}});
-    await vegaEmbed('#dispersao', dispersao, {renderer: 'canvas', actions: {export: true, source: false, compiled: false, editor: false}});
-    document.getElementById('status').textContent = dados.length.toLocaleString('pt-BR') + ' indivíduos representados. Dados completos, sem amostragem.';
+    await vegaEmbed('#barras', barras, {renderer: 'canvas', actions: false});
+    await vegaEmbed('#dispersao', dispersao, {renderer: 'canvas', actions: false});
+    document.getElementById('status').textContent = dados.length.toLocaleString('pt-BR') + ' registros.';
   }
   iniciar().catch(erro => {
     document.getElementById('status').textContent = 'Falha ao carregar: ' + erro.message;
